@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вход | Финансовая Империя</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0e0e0e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Финансовая Империя 💰</h1>
+  <h2>Войти в аккаунт</h2>
+
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Пароль" />
+  <br />
+  <button onclick="signUp()">Регистрация</button>
+  <button onclick="signIn()">Войти</button>
+  <p id="status"></p>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAWhGLiE8fYqCF6r1ttMHvDr50jOpPMWxA",
+      authDomain: "financeempire-84524.firebaseapp.com",
+      projectId: "financeempire-84524",
+      storageBucket: "financeempire-84524.appspot.com",
+      messagingSenderId: "24004163444",
+      appId: "1:24004163444:web:e6046100eadc42e6429e21",
+      measurementId: "G-M2NKWTT4YN"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    window.signUp = async () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        document.getElementById("status").innerText = "✅ Успешная регистрация!";
+        
+        // Сохраняем в Firestore
+        await addDoc(collection(db, "users"), {
+          uid: user.uid,
+          email: user.email,
+          registeredAt: new Date()
+        });
+      } catch (error) {
+        document.getElementById("status").innerText = `❌ ${error.message}`;
+      }
+    };
+
+    window.signIn = async () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        document.getElementById("status").innerText = "✅ Вход выполнен!";
+        setTimeout(() => window.location.href = "index.html", 1000);
+      } catch (error) {
+        document.getElementById("status").innerText = `❌ ${error.message}`;
+      }
+    };
+  </script>
+
+</body>
+</html>
+

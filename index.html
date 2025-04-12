@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finance Empire — Финансовая грамотность</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f0f4f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 2rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    main {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #1e88e5;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #1565c0;
+    }
+  </style>
+  
+</head>
+<body>
+
+  <header>
+    <h1>Finance Empire</h1>
+    <p>Открой путь к финансовой свободе через игру и знания</p>
+    <div class="header-buttons">
+      <button id="theme-toggle">🌙 Тёмная тема</button>
+      <button onclick="window.location.href='login.html'">Войти</button>
+      <button id="lang-toggle">🌐 Поменять язык</button>
+    </div>
+    
+    <link rel="stylesheet" type="text/css" href="css/styles.css"> 
+    <script src="js/theme.js"></script>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Финансовый тест</h2>
+      <p>Узнай свой стиль управления деньгами</p>
+      <button onclick="location.href='test.html'">Пройти тест</button>
+    </div>
+    <div class="card">
+      <h2>Мини-игра</h2>
+      <p>Прими финансовые решения и узнай последствия</p>
+      <button onclick="location.href='game.html'">Играть</button>
+    </div>
+    <div class="card">
+      <h2>Калькулятор</h2>
+      <p>Сравни кредиты и рассчитай переплату</p>
+      <button onclick="location.href='calculator.html'">Открыть калькулятор</button>
+    </div>
+    <div class="card">
+      <h2>База знаний</h2>
+      <p>Изучай статьи и советы по финансам</p>
+      <button onclick="location.href='knowledge.html'">Перейти</button>
+    </div>
+    <div class="card">
+      <h2>Финансовые челленджи</h2>
+      <p>Ежедневные задания для тренировки навыков</p>
+      <button onclick="location.href='challenges.html'">Начать</button>
+    </div>
+  
+    <div class="card">
+      <h2>Войти</h2>
+      <p>Авторизуйтесь, чтобы начать путь к финансовой свободе</p>
+      <button onclick="window.location.href='login.html'">Войти</button>
+    </div>
+    <div class="card">
+      <h2>Личный кабинет</h2>
+      <p>Просмотрите свой прогресс и достижения</p>
+      <button onclick="window.location.href='profile.html'">Перейти</button>
+    </div>
+
+
+
+  
+
+  
+    </main>
+
+    <script src="https://bot.jaicp.com/chatwidget/WAoitIXH:702eff8d3355f1c42fc12fc28f517b2810741936/justwidget.js?force=true" async></script>   
+    
+    <script>
+     const translations = {
+  kz: {
+    title: "Finance Empire — Қаржылық сауаттылық",
+    slogan: "Ойын мен білім арқылы қаржылық еркіндікке жол аш",
+    testTitle: "Қаржылық тест",
+    testDesc: "Ақша басқару стиліңізді біліңіз",
+    gameTitle: "Мини-ойын",
+    gameDesc: "Қаржылық шешімдер қабылдап, нәтижесін көр",
+    calcTitle: "Калькулятор",
+    calcDesc: "Несиелерді салыстырып, артық төлемді есепте",
+    knowTitle: "Білім базасы",
+    knowDesc: "Қаржы туралы мақалалар мен кеңестер оқыңыз",
+    challTitle: "Қаржылық челлендждер",
+    challDesc: "Дағдыларды дамытуға арналған күнделікті тапсырмалар",
+    chatTitle: "Қаржылық чат-көмекші",
+    chatDesc: "Қаржылық көмекшіге сұрақ қой",
+    loginTitle: "Кіру",
+    loginDesc: "Қаржылық еркіндікке жол ашу үшін кіріңіз",
+    loginBtn: "Кіру",
+    profileTitle: "Жеке кабинет",
+    profileDesc: "Прогресс пен жетістіктерді қараңыз",
+    profileBtn: "Көру"
+  },
+  ru: {
+    title: "Finance Empire — Финансовая грамотность",
+    slogan: "Открой путь к финансовой свободе через игру и знания",
+    testTitle: "Финансовый тест",
+    testDesc: "Узнай свой стиль управления деньгами",
+    gameTitle: "Мини-игра",
+    gameDesc: "Прими финансовые решения и узнай последствия",
+    calcTitle: "Калькулятор",
+    calcDesc: "Сравни кредиты и рассчитай переплату",
+    knowTitle: "База знаний",
+    knowDesc: "Изучай статьи и советы по финансам",
+    challTitle: "Финансовые челленджи",
+    challDesc: "Ежедневные задания для тренировки навыков",
+    chatTitle: "Финансовый чат-помощник",
+    chatDesc: "Задай вопрос финансовому помощнику",
+    loginTitle: "Войти",
+    loginDesc: "Войдите, чтобы продолжить путь к финансовой свободе",
+    loginBtn: "Войти",
+    profileTitle: "Личный кабинет",
+    profileDesc: "Просматривай прогресс и достижения",
+    profileBtn: "Открыть"
+  }
+};
+
+    
+      let currentLang = "ru";
+    
+      document.getElementById("lang-toggle").addEventListener("click", () => {
+        currentLang = currentLang === "ru" ? "kz" : "ru";
+        translateUI();
+      });
+    
+      function translateUI() {
+        const t = translations[currentLang];
+        document.title = t.title;
+        document.querySelector("header h1").textContent = "Finance Empire";
+        document.querySelector("header p").textContent = t.slogan;
+    
+        const cards = document.querySelectorAll(".card");
+    
+        cards[0].querySelector("h2").textContent = t.testTitle;
+        cards[0].querySelector("p").textContent = t.testDesc;
+    
+        cards[1].querySelector("h2").textContent = t.gameTitle;
+        cards[1].querySelector("p").textContent = t.gameDesc;
+    
+        cards[2].querySelector("h2").textContent = t.calcTitle;
+        cards[2].querySelector("p").textContent = t.calcDesc;
+    
+        cards[3].querySelector("h2").textContent = t.knowTitle;
+        cards[3].querySelector("p").textContent = t.knowDesc;
+    
+        cards[4].querySelector("h2").textContent = t.challTitle;
+        cards[4].querySelector("p").textContent = t.challDesc;
+    
+        cards[5].querySelector("h2").textContent = "💬 " + t.chatTitle;
+        cards[5].querySelector("p").textContent = t.chatDesc;
+    
+        cards[6].querySelector("h2").textContent = t.loginTitle;
+        cards[6].querySelector("p").textContent = t.loginDesc;
+        cards[6].querySelector("button").textContent = t.loginBtn;
+    
+        cards[7].querySelector("h2").textContent = t.profileTitle;
+        cards[7].querySelector("p").textContent = t.profileDesc;
+        cards[7].querySelector("button").textContent = t.profileBtn;
+      }
+    </script>
+     
+</body>
+</html>

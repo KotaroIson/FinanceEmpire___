@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Финансовый тест | FinQuest</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6fa;
+      color: #333;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e88e5;
+    }
+
+    .question {
+      margin-bottom: 1.5rem;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .question h3 {
+      margin-top: 0;
+    }
+
+    .answers label {
+      display: block;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+
+    button {
+      background: #1e88e5;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: block;
+      margin: 2rem auto;
+    }
+
+    button:hover {
+      background: #1565c0;
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #e3f2fd;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+
+  <body>
+    <h1>Финансовый тест</h1>
+    <form id="quizForm">
+
+      <div class="question">
+        <h3>1. Что ты делаешь, когда получаешь зарплату?</h3>
+        <div class="answers">
+          <label><input type="radio" name="q1" value="spender"> Трачу на удовольствия</label>
+          <label><input type="radio" name="q1" value="saver"> Сразу откладываю часть</label>
+          <label><input type="radio" name="q1" value="investor"> Инвестирую в активы</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>2. Как ты относишься к кредитам?</h3>
+        <div class="answers">
+          <label><input type="radio" name="q2" value="spender"> Часто беру, если нужно</label>
+          <label><input type="radio" name="q2" value="saver"> Стараюсь избегать</label>
+          <label><input type="radio" name="q2" value="risky"> Беру на инвестиции или бизнес</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>3. Что ты делаешь при неожиданных доходах?</h3>
+        <div class="answers">
+          <label><input type="radio" name="q3" value="spender"> Трачу на себя</label>
+          <label><input type="radio" name="q3" value="saver"> Откладываю</label>
+          <label><input type="radio" name="q3" value="investor"> Инвестирую</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>4. Насколько регулярно ты отслеживаешь расходы?</h3>
+        <div class="answers">
+          <label><input type="radio" name="q4" value="spender"> Никогда</label>
+          <label><input type="radio" name="q4" value="balanced"> Иногда</label>
+          <label><input type="radio" name="q4" value="saver"> Постоянно</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h3>5. Что ты выберешь: айфон в кредит или копить?</h3>
+        <div class="answers">
+          <label><input type="radio" name="q5" value="spender"> В кредит, конечно</label>
+          <label><input type="radio" name="q5" value="balanced"> Зависит от условий</label>
+          <label><input type="radio" name="q5" value="saver"> Только накопить</label>
+        </div>
+      </div>
+    
+      <div class="question">
+        <h3>6. Что для тебя важнее?</h3>
+        <div class="answers">
+          <label><input type="radio" name="q6" value="spender"> Наслаждаться моментом</label>
+          <label><input type="radio" name="q6" value="balanced"> Найти баланс</label>
+          <label><input type="radio" name="q6" value="investor"> Расти в будущем</label>
+        </div>
+      </div>
+    
+      <button type="submit">Узнать результат</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+      document.getElementById('quizForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        const questionNames = ['q1','q2','q3','q4','q5','q6'];
+        const answers = questionNames.map(q =>
+          document.querySelector('input[name="' + q + '"]:checked')?.value
+        );
+    
+        if (answers.includes(undefined)) {
+          alert("Пожалуйста, ответьте на все вопросы.");
+          return;
+        }
+    
+        const scores = { spender: 0, saver: 0, investor: 0, balanced: 0, risky: 0 };
+        answers.forEach(a => scores[a] = (scores[a] || 0) + 1);
+    
+        let resultType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+    
+        const results = {
+          spender: "💸 Вы транжира! Деньги утекают сквозь пальцы. Попробуйте составить бюджет и следовать ему.",
+          saver: "💰 Вы бережливый! Отлично умеете управлять деньгами и копите на цели. Продолжайте!",
+          investor: "📈 Вы инвестор! Думаете на перспективу и стремитесь к финансовому росту.",
+          balanced: "⚖ Вы балансировщик. Умеете контролировать траты и жить в гармонии с бюджетом.",
+          risky: "🔥 Вы склонны к риску. Будьте осторожны с кредитами и рискованными инвестициями!"
+        };
+    
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = "<h2>Результат:</h2><p>" + results[resultType] + "</p>";
+        resultDiv.style.display = "block";
+      });
+    </script>
+    
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="index.html" style="background:#ccc; padding:0.5rem 1rem; border-radius:8px; text-decoration:none;">⬅ Вернуться на главную</a>
+    </div>
+    
+    </body>
+    </html>
+    

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финансовые челленджи</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6fa;
+            color: #333;
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #1e88e5;
+        }
+        .challenge-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .challenge-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .challenge-desc {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        .complete-btn {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .complete-btn:hover {
+            background-color: #1565c0;
+        }
+        .back-btn {
+            text-align: center;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Финансовые челленджи</h1>
+
+<div class="challenge-container">
+    <div class="challenge-title">Челлендж #1: Экономия на обеде</div>
+    <div class="challenge-desc">Сегодня постарайся не тратить деньги на кафе. Приготовь обед дома. Сэкономленные деньги откладывай на депозит.</div>
+    <button class="complete-btn" onclick="markAsComplete(1)">Выполнено</button>
+</div>
+
+<div class="challenge-container">
+    <div class="challenge-title">Челлендж #2: Инвестирование в фондовый рынок</div>
+    <div class="challenge-desc">Изучи основы инвестирования в акции и попробуй выбрать одну компанию для долгосрочных инвестиций (не реальный, а симуляционный выбор).</div>
+    <button class="complete-btn" onclick="markAsComplete(2)">Выполнено</button>
+</div>
+
+<div class="challenge-container">
+    <div class="challenge-title">Челлендж #3: Управление долгом</div>
+    <div class="challenge-desc">Если у тебя есть долг, постарайся найти способ сократить ежемесячные выплаты по нему, например, рефинансировать кредит или уменьшить потребительские расходы.</div>
+    <button class="complete-btn" onclick="markAsComplete(3)">Выполнено</button>
+</div>
+
+<div class="challenge-container">
+    <div class="challenge-title">Челлендж #4: Финансовая грамотность</div>
+    <div class="challenge-desc">Прочитай одну статью о личных финансах и сделай заметки о том, что ты узнал.</div>
+    <button class="complete-btn" onclick="markAsComplete(4)">Выполнено</button>
+</div>
+
+<div class="back-btn">
+    <a href="index.html" style="background:#ccc; padding:0.5rem 1rem; border-radius:8px; text-decoration:none;">⬅ Вернуться на главную</a>
+</div>
+
+<script>
+
+    let challengesCompleted = [false, false, false, false];
+
+    function markAsComplete(challengeNumber) {
+        challengesCompleted[challengeNumber - 1] = true;
+        alert(`Челлендж #${challengeNumber} выполнен! Отлично!`);
+
+        const button = document.querySelectorAll('.complete-btn')[challengeNumber - 1];
+        button.style.display = 'none';
+
+        let completedCount = challengesCompleted.filter(challenge => challenge).length;
+        if (completedCount === challengesCompleted.length) {
+            alert('Поздравляем! Ты выполнил все челленджи на сегодня!');
+        }
+    }
+</script>
+
+</body>
+</html>
